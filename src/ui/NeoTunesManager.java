@@ -8,6 +8,8 @@ public class NeoTunesManager{
    
     public static Scanner sc=new Scanner(System.in);
     
+    public static NeoTunesController neoTunesController= new NeoTunesController();
+    
     public static void main (String  args[]){
        
         menu();
@@ -36,7 +38,7 @@ public class NeoTunesManager{
                 RegiterUserPremium();
             break;
             case 5:
-                registerSong();
+                RegisterSong();
                 break;
             case 6: 
                 registerPodcast();
@@ -56,20 +58,51 @@ public class NeoTunesManager{
             }
         }
     }
-    public static void RegisterConsumer(){
+    private  static void RegisterConsumer(){
         System.out.println("enter your name");
         
         String name =sc.nextLine();
 
         System.out.println("enter your date of afilition");
 
-         int dateOfAfilition=sc.nextInt();
+         Date dateOfAfilition=sc
 
-         System.out.println("enter your ulr ");
+         System.out.println("enter your cedula");
 
-         String url
+         String cedula=sc.nextLine();
 
+         int timeOfReproduction;
 
+         if(NeoTunesController.RegisterUser(name,  dateOfAfilition,  cedula, timeOfReproduction)){
+            System.out.println("correctly registered");
+        
+        }else{
+            
+            System.out.println("type correctly");
+         
+            }
 
-    }
+    
+        }
+        private static void  RegisterProducer(){
+
+        }
+        private static void RegisterUserStandard(){
+
+        }
+        private static void RegiterUserPremium(){
+
+        }
+        private static void RegisterSong(){
+
+        }
+        private static void registerPodcast(){
+
+        }
+        private static void createdPlayist(){
+
+        }
+        private static void editPlayist(){
+
+        }
 }
