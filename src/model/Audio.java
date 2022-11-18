@@ -2,7 +2,7 @@ package model;
 
 
 public  abstract class  Audio {
-    private String name;
+    private String nameAP;
 
     private String url;
 
@@ -10,19 +10,19 @@ public  abstract class  Audio {
 
     private int numberOfReproduction;
 
-    public Audio(String name, String url, int duration, int numberOfReproduction) {
-    this.name = name;
+    public Audio(String nameAP, String url, int duration, int numberOfReproduction) {
+    this.nameAP = nameAP;
     this.url = url;
     this.duration = duration;
     this.numberOfReproduction = numberOfReproduction;
     }
 
-    public String getName() {
-    return name;
+    public String getNameAP() {
+    return nameAP;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameAP) {
+        this.nameAP = nameAP;
     }
 
     public String getUrl() {

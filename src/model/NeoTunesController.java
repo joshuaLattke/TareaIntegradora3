@@ -1,59 +1,63 @@
 package model;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 
 public class NeoTunesController{
     
-     private ArrayList<User>collection; 
+     private ArrayList<User>users; 
 
-     private ArrayList<Audio>collection2;
+     private ArrayList<Audio>audios;
 
-     private ArrayList<Playist>collection3;
+    private ArrayList<Playist>playlist;
 
-     public  void controllerNeotunes(){
+    
 
-        collection =new ArrayList<User>();
+     public NeoTunesController(){
 
-        collection2 =new ArrayList<Audio>();
+        users =new ArrayList<User>();
 
-        collection3= new ArrayList<Playist>();
-
+        audios =new ArrayList<Audio>();
+          
+        playlist= new ArrayList<Playist>();
+    
+ 
      }
      
-     public boolean registerUserPremium(String name, Date dateOfAfilition, int cedula, int timeOfReproduction){
+     public boolean registerUserPremium(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
       
-        collection.add(new UserPremium(name, dateOfAfilition, cedula, timeOfReproduction));
+        users.add(new UserPremium(name, dateOfAfilition, cedula, timeOfReproduction));
          
-            for(int i=0; i<collection.size(); i++){
+            for(int i=0; i<users.size(); i++){
         
-                if(name == collection.get(i).getName()){
+                if(name == users.get(i).getName()){
 
                     return true;
                  }
              }return false; 
         }         
 
-    public boolean registerUseStandard(String name, Date dateOfAfilition, int cedula, int timeOfReproduction){
+    public boolean registerUseStandard(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
 
-        collection.add(new UserStandar(name, dateOfAfilition, cedula, timeOfReproduction));
+        users.add(new UserStandar(name, dateOfAfilition, cedula, timeOfReproduction));
 
-        for(int i=0; i<collection.size(); i++){
+        for(int i=0; i<users.size(); i++){
 
-            if(name.equals(collection.get(i).getName())){
+            if(name.equals(users.get(i).getName())){
 
                 return true;
             }
         }return false;
     }
 
-    public boolean registerArtist(String name, Date dateOfAfilition, int cedula, int timeOfReproduction){
+    public boolean registerArtist(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
          
-        collection.add(new Artist(name, dateOfAfilition, cedula, timeOfReproduction));
+        users.add(new Artist(name, dateOfAfilition, cedula, timeOfReproduction));
 
-        for(int i=0; i<collection.size(); i++){
+        for(int i=0; i<users.size(); i++){
 
-            if(name.equals(collection.get(i).getName())){
+            if(name.equals(users.get(i).getName())){
                 
                 return true;
             }
@@ -61,48 +65,128 @@ public class NeoTunesController{
         }return false;
     }
 
-    public boolean registerContenCreator(String name, Date dateOfAfilition, int cedula, int timeOfReproduction){
+    public boolean registerContenCreator(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
 
-        collection.add(new ContentCreator(name, dateOfAfilition, cedula, timeOfReproduction));
+        users.add(new ContentCreator(name, dateOfAfilition, cedula, timeOfReproduction));
 
-        for (int i=0; i<collection.size(); i++){
+        for (int i=0; i<users.size(); i++){
 
-            if(name.equals(collection.get(i).getName())){
+            if(name.equals(users.get(i).getName())){
                 return true;
             }
             
 
         }return false;
     }
+    public boolean addSong(){
+        
+    }
 
-    public boolean registerSong(String name, String url, int duration, int numberOfReproduction, String album, int salesValue,
+
+    public boolean registerSong(String nameAP, String url, int duration, int numberOfReproduction, String album, int salesValue,
     int numberOftimesSold, TypeGenre genre){
 
-        collection2.add( new Song(name, url, duration, numberOfReproduction, album, salesValue, numberOfReproduction , genre));
+        audios.add( new Song(nameAP, url, duration, numberOfReproduction, album, salesValue, numberOfReproduction , genre));
          
-        for (int i=0; i<collection.size(); i++){
+        for (int i=0; i<users.size(); i++){
 
-            if(name.equals(collection.get(i).getName())){
+            if(nameAP.equals(users.get(i).getName())){
+                if(users.get(i) instanceof Artist){
+                    return true;
+                }
                 return true;
             }
 
         }return false;
     }
 
-    public boolean registerPodcast(String name, String url, int duration, int numberOfReproduction, String description,
+    public boolean registerPodcast(String nameAP, String url, int duration, int numberOfReproduction, String description,
     Typepodcast category){
 
-        collection2.add(new Podcast(name, url, duration, numberOfReproduction, description, category));
+        audios.add(new Podcast(nameAP, url, duration, numberOfReproduction, description, category));
 
-            for (int i=0; i<collection.size(); i++){
+            for (int i=0; i<users.size(); i++){
 
-                if(name.equals(collection.get(i).getName())){
+                if(nameAP.equals(users.get(i).getName())){
+                    if(users.get(i) instanceof ContentCreator){
                     return true;
                 }
+            }
 
         }return false;
         
     }
+
+    /*public  void  verfifyUser(String name){
+        for (int i=0; i<users.size(); i++){
+            
+            users c= users.get(i);
+            
+            if(c.getName().equals(UserPremium.getName())){
+
+            }
+        }
+
+
+
+    }
+    */
+    /*public boolean searchUser(String name){
+        
+        users.get(i).getName()
+        for (int i=0; i<playlist.size(); i++){
+
+            if(name.equals(users.get(i).getName())){
+                
+            }return true;
+            
+        }return false;
+      
+        
+
+    }
+    */
+    public  boolean  addPlaylist(String namePlayist){ 
+        for (int i=0; i<playlist.size();i++){
+
+                if(namePlayist.equals(playlist.get(i).getNamePlayist())){
+                    return false;
+                }
+            }
+
+
+            playlist.add(new Playist(namePlayist));
+        return true;        
+    }
+
+    public boolean createdPlayist(String name, String namePlayist){
+
+        for (int i=0; i<users.size(); i++){
+                if(name.equals(users.get(i).getName())){
+                    if(users.get(i) instanceof Consumer){
+                        return addPlaylist(namePlayist);
+                    }
+                }
+        }
+        return false;
+    }
+
+
+    public boolean editPlayist(String namePlayist, String audioList, TypePlayist type, String name){
+
+        ///playlist.set(int index(new Playist(namePlayist, audioList, type));
+        for (int i=0; i<playlist.size(); i++){
+
+                if(name.equals(users.get(i).getName())){
+                return true;
+                }
+
+        }return false;
+
+    }
+
+
+
 }        
 
         

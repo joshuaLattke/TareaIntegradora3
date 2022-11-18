@@ -1,10 +1,11 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public class UserPremium extends User {
 
-    public UserPremium(String name, Date dateOfAfilition, int cedula, int timeOfReproduction) {
+public class UserPremium extends Consumer {
+
+    public UserPremium(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction) {
         super(name, dateOfAfilition, cedula, timeOfReproduction);
         //TODO Auto-generated constructor stub
     }

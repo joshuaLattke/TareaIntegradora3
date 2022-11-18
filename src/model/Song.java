@@ -10,9 +10,9 @@ public class Song extends Audio{
     
     private TypeGenre genre;
 
-    public Song(String name, String url, int duration, int numberOfReproduction, String album, int salesValue,
+    public Song(String nameAP, String url, int duration, int numberOfReproduction, String album, int salesValue,
             int numberOftimesSold, TypeGenre genre) {
-        super(name, url, duration, numberOfReproduction);
+        super(nameAP, url, duration, numberOfReproduction);
         this.album = album;
         this.salesValue = salesValue;
         this.numberOftimesSold = numberOftimesSold;

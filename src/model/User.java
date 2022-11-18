@@ -1,14 +1,14 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public  class User {
     private String name;
-    private Date dateOfAfilition;
+    private LocalDate dateOfAfilition;
     private int cedula;
     private int timeOfReproduction;
     
-    public User(String name, Date dateOfAfilition, int cedula, int timeOfReproduction) {
+    public User(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction) {
         this.name = name;
         this.dateOfAfilition = dateOfAfilition;
         this.cedula = cedula;
@@ -20,10 +20,10 @@ public  class User {
     public void setName(String name) {
         this.name = name;
     }
-    public Date getDateOfAfilition() {
+    public LocalDate getDateOfAfilition() {
         return dateOfAfilition;
     }
-    public void setDateOfAfilition(Date dateOfAfilition) {
+    public void setDateOfAfilition(LocalDate dateOfAfilition) {
         this.dateOfAfilition = dateOfAfilition;
     }
     public int getCedula() {
@@ -37,6 +37,9 @@ public  class User {
     }
     public void setTimeOfReproduction(int timeOfReproduction) {
         this.timeOfReproduction = timeOfReproduction;
+    }
+    public boolean addPlaylist(Playist playist) {
+        return false;
     }
    
 }

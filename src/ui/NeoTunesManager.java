@@ -1,7 +1,6 @@
 package ui;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Scanner;
 import model.NeoTunesController;
 import model.TypeGenre;
@@ -10,8 +9,6 @@ import model.Typepodcast;
 public class NeoTunesManager{
    
     public static Scanner sc=new Scanner(System.in);
-
-     
     
     public static NeoTunesController neoTunesController= new NeoTunesController();
 
@@ -24,19 +21,17 @@ public class NeoTunesManager{
     public static void main (String args[]){
         NeoTunesManager nm = new NeoTunesManager();
         nm.menu();
-        Date dateOfAfilition = new Date();
-        SimpleDateFormat sdf= new SimpleDateFormat("DD/MM/YYYY");
-        String 
+        
     }
     public void menu(){
         System.out.println("Welcome to NeoTunes");
         
-        boolean exit=false;
-        int option;
+    
 
         while(!exit){
-            System.out.println(" 1. Register user producer\n 2. Register  user consumer \n 3. Register user standard \n 4. Register user Premium\n 5. Register Song \n 6. Register Podcast\n 7. create Playist\n 8.edit Playist\n 9. exit");
-            option=sc.nextInt();
+            System.out.println(" 1. Register user\n 2. Register  Song \n 3. Register podcast \n 4. CreatedPlayist\n 5. Edit playist \n 6. exit");
+            int option = sc.nextInt();
+			sc.nextLine();
 
         switch (option) {
               case 1:
@@ -71,7 +66,7 @@ public class NeoTunesManager{
             int option;
         
         while(!exit){
-            System.out.println("1. Register Consumer\n 2.Register Producer");
+            System.out.println("1. Register Consumer\n 2.Register Producer\n 3. go back");
             
             option=sc.nextInt();
             
@@ -101,7 +96,7 @@ public class NeoTunesManager{
         
         while(!exit){
             
-            System.out.println("1. Register user Standard \n 2. Register user Premium");
+            System.out.println("1. Register user Standard \n 2. Register user Premium\n 3. Go back");
             
             option=sc.nextInt();
         
@@ -121,13 +116,12 @@ public class NeoTunesManager{
         }
     }
     public   void RegisterUserStandard(){
+        
+        sc.nextLine();
+
         System.out.println("enter your name");
         
         String name =sc.nextLine();
-
-        System.out.println("enter your date of afilition");
-
-         Date dateOfAfilition;
 
          System.out.println("enter your cedula");
 
@@ -136,6 +130,10 @@ public class NeoTunesManager{
          System.out.println("register time of reproduction ");
 
          int timeOfReproduction=sc.nextInt();
+
+         System.out.println("enter your date of afilition");
+
+        LocalDate dateOfAfilition =LocalDate.now();
 
          if(neoTunesController.registerUseStandard(name,  dateOfAfilition,  cedula, timeOfReproduction)){
             System.out.println("correctly registered");
@@ -148,13 +146,14 @@ public class NeoTunesManager{
 
     }
     public  void RegisterUserPremium(){
+
+        sc.nextLine();
+
         System.out.println("enter your name");
         
         String name =sc.nextLine();
 
-        System.out.println("enter your date of afilition");
-
-         Date dateOfAfilition;
+         LocalDate dateOfAfilition=LocalDate.now();
 
          System.out.println("enter your cedula");
 
@@ -202,12 +201,12 @@ public class NeoTunesManager{
         }
     }
 
-    public  void RegisterSong(){
-        System.out.println("register Song ");
-        
-        System.out.println("");
-    }
-    public static void Artist(){
+    
+    
+    public  void Artist(){
+
+        sc.nextLine();
+
         System.out.println(" register artist");
 
         System.out.println("register name");
@@ -216,10 +215,6 @@ public class NeoTunesManager{
         
         String name =sc.nextLine();
 
-        System.out.println("enter your date of afilition");
-
-         Date dateOfAfilition;
-
          System.out.println("enter your cedula");
 
          int  cedula=sc.nextInt();
@@ -227,6 +222,10 @@ public class NeoTunesManager{
         System.out.println("register time of reproduction");
 
          int timeOfReproduction=sc.nextInt();
+
+         System.out.println("enter your date of afilition");
+
+         LocalDate dateOfAfilition=LocalDate.now();
 
          if(neoTunesController.registerArtist(name, dateOfAfilition, cedula, timeOfReproduction)){
             System.out.println("the name cannot be repeated");
@@ -238,27 +237,25 @@ public class NeoTunesManager{
     }
     public  void ContenCreator(){
 
-        System.out.println("register ContentCreator");
-
-        System.out.println("register name");
+        sc.nextLine();
 
         System.out.println("enter your name");
         
         String name =sc.nextLine();
+        
+        System.out.println("Regisrer time of reproductioin");
 
-        System.out.println("enter your date of afilition");
+        int timeOfReproduction=sc.nextInt();
+        System.out.println("enter your cedula");
 
-         Date dateOfAfilition;
+        int  cedula=sc.nextInt();
 
-         System.out.println("enter your cedula");
+        System.out.println("register date");
 
-         int  cedula=sc.nextInt();
+         LocalDate dateOfAfilition= LocalDate.now();
 
-         System.out.println("Regisrer time of reproductioin");
-
-         int timeOfReproduction=sc.nextInt();
-
-            if(neoTunesController.registerContenCreator(name, dateOfAfilition, cedula, timeOfReproduction)){
+        
+         if(neoTunesController.registerContenCreator(name, dateOfAfilition, cedula, timeOfReproduction)){
                 System.out.println("properly registered");
 
             }else{
@@ -267,13 +264,36 @@ public class NeoTunesManager{
     }
     public  void createdPlayist(){
 
+        sc.nextLine(); 
+
+        System.out.println( "enter the user's name");
+
+        String name=sc.nextLine();
+
+        System.out.println(" register name for playist");
+
+        String namePlayist=sc.nextLine();
+
+        if(neoTunesController.createdPlayist(name, namePlayist)){
+            System.out.println("correct creation of the playist");
+        }else{
+            System.out.println("type in the options correctly ");
+        }
+
     }
     public  void registerSong(){
+
+        sc.nextLine();
+
+        System.out.println("enter the user name");
+
+        String name=sc.nextLine();
+
         System.out.println("register song ");
         
         System.out.println("register name");
         
-        String name=sc.nextLine();
+        String nameAP=sc.nextLine();
 
         System.out.println("register url");
 
@@ -304,7 +324,7 @@ public class NeoTunesManager{
         TypeGenre genre=null;
          
             while(!exit){
-            System.out.println("1. House 2.Pop 3. Rock 4.Trap");
+            System.out.println("1. House\n 2.Pop\n 3. Rock\n 4.Trap");
         
                 int option=sc.nextInt();
                         switch(option){
@@ -330,7 +350,7 @@ public class NeoTunesManager{
                     }
             }
 
-            if(neoTunesController.registerSong(name, url, duration, numberOfReproduction, album, salesValue, numberOftimesSold, genre)){
+            if(neoTunesController.registerSong(nameAP, url, duration, numberOfReproduction, album, salesValue, numberOftimesSold, genre)){
                 System.out.println("correct registration");
 
             }else{
@@ -342,6 +362,40 @@ public class NeoTunesManager{
 
     }
     public  void editPlayist(){
+    System.out.println("enter your username");
+
+    String name=sc.nextLine(); 
+    if(neoTunesController.){
+
+        System.out.println("the user if he is a consumer ");
+        
+        while(!exit){
+
+            System.out.println("1. Add\n 2. Remove \n 3. Go back");
+        
+            int option=sc.nextInt();
+             switch(option){
+             case 1: 
+                add();
+             break;
+             case 2:
+                remove();
+              break;
+            case 3:
+                exit=true;
+                break;
+            default:
+            System.out.println("type in the options correctly "); 
+            break;     
+            }
+
+                 }else{
+                System.out.println("the user if he is a consumer ");
+                 }
+     
+   
+    }
+
 
     }
     public void registerPodcast(){
@@ -349,7 +403,7 @@ public class NeoTunesManager{
       
         System.out.println("register name ");
 
-        String name=sc.nextLine(); 
+        String nameAP=sc.nextLine(); 
     
         System.out.println("register url ");
       
@@ -396,7 +450,7 @@ public class NeoTunesManager{
                 }
             }   
             
-                    if(neoTunesController.registerPodcast(name, url, duration, numberOfReproduction, description, category)){
+                    if(neoTunesController.registerPodcast(nameAP, url, duration, numberOfReproduction, description, category)){
                 
                     System.out.println("correct registrion");
             
@@ -404,6 +458,48 @@ public class NeoTunesManager{
                 
                     System.out.println("type another name");
                     }
+    }
+    public void add(){
+        while(!exit){
+
+            int option=sc.nextInt();
+            switch(option){
+                case 1:
+                addSong();
+                break;
+                case 2:
+                addPodcast();
+                break;
+                case 3:
+                exit=true;
+                break;
+                default:
+                System.out.println("type correctly the options");
+                break;
+
+            }
+        }
+    }
+    public void remove(){
+        while(!exit){
+
+            int option=sc.nextInt();
+            switch(option){
+                case 1:
+                removeSong();
+                break;
+                case 2:
+                removePodcast();
+                break;
+                case 3:
+                exit=true;
+                break;
+                default:
+                System.out.println("type correctly the options");
+                break;
+
+            }
+        }
     }
 
 }
