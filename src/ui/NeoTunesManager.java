@@ -350,7 +350,7 @@ public class NeoTunesManager{
                     }
             }
 
-            if(neoTunesController.registerSong(nameAP, url, duration, numberOfReproduction, album, salesValue, numberOftimesSold, genre)){
+            if(neoTunesController.registerSong(name, nameAP, url, duration, numberOfReproduction, album, salesValue, numberOftimesSold, genre)){
                 System.out.println("correct registration");
 
             }else{
@@ -399,7 +399,15 @@ public class NeoTunesManager{
 
     }
     public void registerPodcast(){
-      System.out.println("Register podacast");
+
+        sc.nextLine();
+
+        
+        System.out.println("Register podacast");
+
+        System.out.println("register name user");
+
+        String name=sc.nextLine();
       
         System.out.println("register name ");
 
@@ -450,7 +458,7 @@ public class NeoTunesManager{
                 }
             }   
             
-                    if(neoTunesController.registerPodcast(nameAP, url, duration, numberOfReproduction, description, category)){
+                    if(neoTunesController.registerPodcast(name, nameAP, url, duration, numberOfReproduction, description, category)){
                 
                     System.out.println("correct registrion");
             

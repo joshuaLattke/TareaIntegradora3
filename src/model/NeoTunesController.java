@@ -1,5 +1,7 @@
 package model;
 import java.util.ArrayList;
+
+
 import java.time.LocalDate;
 
 
@@ -12,7 +14,7 @@ public class NeoTunesController{
 
     private ArrayList<Playist>playlist;
 
-    
+    private UserStandar[]standar;    
 
      public NeoTunesController(){
 
@@ -21,6 +23,8 @@ public class NeoTunesController{
         audios =new ArrayList<Audio>();
           
         playlist= new ArrayList<Playist>();
+
+        this.standar= new UserStandar[20];
     
  
      }
@@ -78,38 +82,63 @@ public class NeoTunesController{
 
         }return false;
     }
-    public boolean addSong(){
+    public boolean addSong(String nameAP, String url, int duration, int numberOfReproduction, String album, int salesValue,
+    int numberOftimesSold, TypeGenre genre){
         
+        for (int i=0; i<audios.size(); i++){
+
+            if(nameAP.equals(audios.get(i).getNameAP())){
+
+                return false;
+            }
+        }
+        
+                audios.add( new Song(nameAP, url, duration, numberOfReproduction, album, salesValue, numberOfReproduction , genre));
+                return true;
+
     }
 
 
-    public boolean registerSong(String nameAP, String url, int duration, int numberOfReproduction, String album, int salesValue,
+    public boolean registerSong(String name, String nameAp, String url, int duration, int numberOfReproduction, String album, int salesValue,
     int numberOftimesSold, TypeGenre genre){
 
-        audios.add( new Song(nameAP, url, duration, numberOfReproduction, album, salesValue, numberOfReproduction , genre));
-         
         for (int i=0; i<users.size(); i++){
 
-            if(nameAP.equals(users.get(i).getName())){
-                if(users.get(i) instanceof Artist){
-                    return true;
-                }
-                return true;
-            }
+            if(name.equals(users.get(i).getName())){
 
-        }return false;
+                if(users.get(i) instanceof Artist){
+
+                    return addSong(nameAp,url,duration,numberOfReproduction,album,salesValue,numberOftimesSold,genre);
+    
+                }
+            }
+        }
+        return false;
     }
 
-    public boolean registerPodcast(String nameAP, String url, int duration, int numberOfReproduction, String description,
+    public boolean addPodcast(String nameAP, String url, int duration, int numberOfReproduction, String description,
     Typepodcast category){
 
+        for (int i=0; i<audios.size(); i++){
+            if(nameAP.equals(audios.get(i).getNameAP())){
+
+                return false;
+
+            }
+        }
         audios.add(new Podcast(nameAP, url, duration, numberOfReproduction, description, category));
+        return true;
 
-            for (int i=0; i<users.size(); i++){
+    }
 
-                if(nameAP.equals(users.get(i).getName())){
-                    if(users.get(i) instanceof ContentCreator){
-                    return true;
+    public boolean registerPodcast(String name, String nameAP, String url, int duration, int numberOfReproduction, String description,
+    Typepodcast category){
+        for (int i=0; i<users.size(); i++){
+
+            if(name.equals(users.get(i).getName())){
+
+                if(users.get(i) instanceof ContentCreator){
+                    return addPodcast(nameAP, url, duration, numberOfReproduction, description, category);
                 }
             }
 
@@ -159,11 +188,25 @@ public class NeoTunesController{
         return true;        
     }
 
+    public boolean standardUser(String name){
+        UserStandar newstandar=new  standar (name);
+        
+        for(int=i; 0< standar.length; i++){
+            if(standar[i]==null){
+                standar[i]=standar;
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     public boolean createdPlayist(String name, String namePlayist){
 
         for (int i=0; i<users.size(); i++){
                 if(name.equals(users.get(i).getName())){
-                    if(users.get(i) instanceof Consumer){
+                    if(users.get(i) instanceof UserPremium){
+                        
                         return addPlaylist(namePlayist);
                     }
                 }

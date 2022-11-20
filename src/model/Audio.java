@@ -21,7 +21,7 @@ public  abstract class  Audio {
     return nameAP;
     }
 
-    public void setName(String nameAP) {
+    public void setNameAP(String nameAP) {
         this.nameAP = nameAP;
     }
 
