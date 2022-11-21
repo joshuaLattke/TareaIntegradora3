@@ -23,6 +23,11 @@ public class NeoTunesManager{
         nm.menu();
         
     }
+    /**
+     * <b>name: </b> main <br>
+     * option that allows the management of the application, drop down menu 
+     * @param args - Main.
+     */
     public void menu(){
         System.out.println("Welcome to NeoTunes");
         
@@ -47,9 +52,6 @@ public class NeoTunesManager{
                 createdPlayist();
             break;
             case 5:
-                editPlayist();
-            break;    
-            case 6:
                 exit=true;
             break; 
                 default:
@@ -58,6 +60,10 @@ public class NeoTunesManager{
             }
         }
     }
+    
+    /**
+     * selection of user type whether consumed or standard
+     */
     public   void RegisterUser(){
             System.out.println("select user type ");
         
@@ -87,7 +93,10 @@ public class NeoTunesManager{
         }    
 
     }
-     public   void  RegisterConsumer(){
+     /**
+     * consumer user type selection 
+     */
+    public   void  RegisterConsumer(){
         System.out.println("select user type ");
         
         boolean exit=false;
@@ -115,6 +124,10 @@ public class NeoTunesManager{
             }   
         }
     }
+    /**
+     *registers the standard user, these are the entries typed by the user
+     @param
+     */
     public   void RegisterUserStandard(){
         
         sc.nextLine();
@@ -145,6 +158,9 @@ public class NeoTunesManager{
             }
 
     }
+    /**
+     * register the premium user, this is where the user digitizes his or her data.
+     */
     public  void RegisterUserPremium(){
 
         sc.nextLine();
@@ -172,6 +188,9 @@ public class NeoTunesManager{
          
             }
     }
+    /**
+     * selection of producer type, whether content creator or artist
+     */
     public  void RegisterProducer(){
         System.out.println("select the type of player");
         
@@ -203,6 +222,9 @@ public class NeoTunesManager{
 
     
     
+    /**
+     * record artist's content data
+     */
     public  void Artist(){
 
         sc.nextLine();
@@ -235,6 +257,9 @@ public class NeoTunesManager{
 
 
     }
+    /**
+     * register the data of the content creator
+     */
     public  void ContenCreator(){
 
         sc.nextLine();
@@ -262,6 +287,9 @@ public class NeoTunesManager{
                 System.out.println("the name cannot be repeated");
             }
     }
+    /**
+     * creation of the playist without the limit of the standard user, only works with the premium user
+     */
     public  void createdPlayist(){
 
         sc.nextLine(); 
@@ -281,6 +309,9 @@ public class NeoTunesManager{
         }
 
     }
+    /**
+     *register the song with the artist's name 
+     */
     public  void registerSong(){
 
         sc.nextLine();
@@ -361,43 +392,10 @@ public class NeoTunesManager{
 
 
     }
-    public  void editPlayist(){
-    System.out.println("enter your username");
-
-    String name=sc.nextLine(); 
-    if(neoTunesController.){
-
-        System.out.println("the user if he is a consumer ");
-        
-        while(!exit){
-
-            System.out.println("1. Add\n 2. Remove \n 3. Go back");
-        
-            int option=sc.nextInt();
-             switch(option){
-             case 1: 
-                add();
-             break;
-             case 2:
-                remove();
-              break;
-            case 3:
-                exit=true;
-                break;
-            default:
-            System.out.println("type in the options correctly "); 
-            break;     
-            }
-
-                 }else{
-                System.out.println("the user if he is a consumer ");
-                 }
-     
-   
-    }
-
-
-    }
+    
+    /**
+     * register the podcast using the username of the content creator
+     */
     public void registerPodcast(){
 
         sc.nextLine();
@@ -467,49 +465,7 @@ public class NeoTunesManager{
                     System.out.println("type another name");
                     }
     }
-    public void add(){
-        while(!exit){
-
-            int option=sc.nextInt();
-            switch(option){
-                case 1:
-                addSong();
-                break;
-                case 2:
-                addPodcast();
-                break;
-                case 3:
-                exit=true;
-                break;
-                default:
-                System.out.println("type correctly the options");
-                break;
-
-            }
-        }
-    }
-    public void remove(){
-        while(!exit){
-
-            int option=sc.nextInt();
-            switch(option){
-                case 1:
-                removeSong();
-                break;
-                case 2:
-                removePodcast();
-                break;
-                case 3:
-                exit=true;
-                break;
-                default:
-                System.out.println("type correctly the options");
-                break;
-
-            }
-        }
-    }
-
+   
 }
 
     

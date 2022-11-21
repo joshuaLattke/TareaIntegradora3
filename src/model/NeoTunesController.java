@@ -14,7 +14,7 @@ public class NeoTunesController{
 
     private ArrayList<Playist>playlist;
 
-    private UserStandar[]standar;    
+   
 
      public NeoTunesController(){
 
@@ -24,12 +24,19 @@ public class NeoTunesController{
           
         playlist= new ArrayList<Playist>();
 
-        this.standar= new UserStandar[20];
+    
     
  
      }
      
-     public boolean registerUserPremium(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
+     /**register premium user, without the repetition of the name
+     * @param name
+     * @param dateOfAfilition
+     * @param cedula
+     * @param timeOfReproduction
+     * @return true or false
+     */
+    public boolean registerUserPremium(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
       
         users.add(new UserPremium(name, dateOfAfilition, cedula, timeOfReproduction));
          
@@ -42,6 +49,13 @@ public class NeoTunesController{
              }return false; 
         }         
 
+    /** register uuser standard, without the repetition of the name
+     * @param name
+     * @param dateOfAfilition
+     * @param cedula
+     * @param timeOfReproduction
+     * @return
+     */
     public boolean registerUseStandard(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
 
         users.add(new UserStandar(name, dateOfAfilition, cedula, timeOfReproduction));
@@ -55,6 +69,13 @@ public class NeoTunesController{
         }return false;
     }
 
+    /** register user artist,without the repetition of the name 
+     * @param name
+     * @param dateOfAfilition
+     * @param cedula
+     * @param timeOfReproduction
+     * @return
+     */
     public boolean registerArtist(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
          
         users.add(new Artist(name, dateOfAfilition, cedula, timeOfReproduction));
@@ -69,6 +90,13 @@ public class NeoTunesController{
         }return false;
     }
 
+    /** register user ContentCreator, without the repetition of the name
+     * @param name
+     * @param dateOfAfilition
+     * @param cedula
+     * @param timeOfReproduction
+     * @return true or false;
+     */
     public boolean registerContenCreator(String name, LocalDate dateOfAfilition, int cedula, int timeOfReproduction){
 
         users.add(new ContentCreator(name, dateOfAfilition, cedula, timeOfReproduction));
@@ -82,6 +110,17 @@ public class NeoTunesController{
 
         }return false;
     }
+    /**comparison of the name creation and adding the song objects
+     * @param nameAP
+     * @param url
+     * @param duration
+     * @param numberOfReproduction
+     * @param album
+     * @param salesValue
+     * @param numberOftimesSold
+     * @param genre
+     * @return true of false
+     */
     public boolean addSong(String nameAP, String url, int duration, int numberOfReproduction, String album, int salesValue,
     int numberOftimesSold, TypeGenre genre){
         
@@ -99,6 +138,18 @@ public class NeoTunesController{
     }
 
 
+    /**validation of the artist's name
+     * @param name
+     * @param nameAp
+     * @param url
+     * @param duration
+     * @param numberOfReproduction
+     * @param album
+     * @param salesValue
+     * @param numberOftimesSold
+     * @param genre
+     * @return true or false;
+     */
     public boolean registerSong(String name, String nameAp, String url, int duration, int numberOfReproduction, String album, int salesValue,
     int numberOftimesSold, TypeGenre genre){
 
@@ -116,6 +167,15 @@ public class NeoTunesController{
         return false;
     }
 
+    /**validation of the name is not repeated and adding the other objects
+     * @param nameAP
+     * @param url
+     * @param duration
+     * @param numberOfReproduction
+     * @param description
+     * @param category
+     * @return true or false;
+     */
     public boolean addPodcast(String nameAP, String url, int duration, int numberOfReproduction, String description,
     Typepodcast category){
 
@@ -131,6 +191,16 @@ public class NeoTunesController{
 
     }
 
+    /**name validation with the content creator 
+     * @param name name creater
+     * @param nameAP name playist
+     * @param url Strign
+     * @param duration duraito
+     * @param numberOfReproduction
+     * @param description decriptio
+     * @param category
+     * @return true or false;
+     */
     public boolean registerPodcast(String name, String nameAP, String url, int duration, int numberOfReproduction, String description,
     Typepodcast category){
         for (int i=0; i<users.size(); i++){
@@ -175,6 +245,10 @@ public class NeoTunesController{
 
     }
     */
+    /**comparison of the name of the playist
+     * @param namePlayist register name platyist
+     * @return true or false;
+     */
     public  boolean  addPlaylist(String namePlayist){ 
         for (int i=0; i<playlist.size();i++){
 
@@ -188,7 +262,7 @@ public class NeoTunesController{
         return true;        
     }
 
-    public boolean standardUser(String name){
+   /*  public boolean standardUser(String name){
         UserStandar newstandar=new  standar (name);
         
         for(int=i; 0< standar.length; i++){
@@ -199,8 +273,13 @@ public class NeoTunesController{
 
         }
         return false;
-    }
+     */
 
+    /**created playist
+     * @param name register user
+     * @param namePlayist register name playist
+     * @return true or false
+     */
     public boolean createdPlayist(String name, String namePlayist){
 
         for (int i=0; i<users.size(); i++){
@@ -215,7 +294,14 @@ public class NeoTunesController{
     }
 
 
-    public boolean editPlayist(String namePlayist, String audioList, TypePlayist type, String name){
+    /**
+     * @param namePlayist
+     * @param audioList
+     * @param type
+     * @param name
+     * @return
+   
+    public void editPlayist(String namePlayist, String audioList, TypePlayist type, String name){
 
         ///playlist.set(int index(new Playist(namePlayist, audioList, type));
         for (int i=0; i<playlist.size(); i++){
@@ -227,7 +313,7 @@ public class NeoTunesController{
         }return false;
 
     }
-
+  */
 
 
 }        
